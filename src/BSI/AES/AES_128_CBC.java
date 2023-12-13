@@ -1,13 +1,20 @@
 package BSI.AES;
 
+import java.security.Security;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Hex;
 
 public class AES_128_CBC {
 	public static void main(String[] args) throws Exception {
+		Security.addProvider(new BouncyCastleProvider());
+	
+		for(int i = 0; i <= 1000; i++) {
+			
 		byte[] keyBytes = Hex.decode("000102030405060708090a0b0c0d0e0f"); // Key of Size: 128Bit = 16 Byte
 		
 		SecretKeySpec key = new SecretKeySpec(keyBytes, "AES"); // SecretKey for aes with keyBytes
@@ -30,5 +37,6 @@ public class AES_128_CBC {
 		byte[] output_decrypted = cipher.doFinal(output_encrypted);
 		
 		System.out.println(Hex.toHexString(output_decrypted));
+		}
 	}
 }
