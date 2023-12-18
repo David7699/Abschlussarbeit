@@ -21,7 +21,7 @@ import org.bouncycastle.util.encoders.Hex;
 
 public class RSA {
 	public static void main(String[] args) throws Exception {
-		Security.addProvider(new BouncyCastleProvider());
+		//Security.addProvider(new BouncyCastleProvider());
 		byte[] msg = Hex.decode("a0a1a2a3a4a5a6a7a0a1");
 		
 		Cipher cipher = Cipher.getInstance("RSA/None/NoPadding", "BC");

@@ -1,5 +1,7 @@
 package BSI.AES;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.Security;
 
 import javax.crypto.Cipher;
@@ -21,8 +23,7 @@ public class AES_128_CBC {
 		
 		Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "BC"); // Initialiaze Cipher with AES/CBC from BC Provider
 		
-		byte[] input = Hex.decode("a0a1a2a3a4a5a6a7a0a1a2a3a4a5a6a7"
-                + "a0a1a2a3a4a5a6a7a0a1a2a3a4a5a6a7" + "a0a1a2a3a4a5a6a7a0a1a2a3a4a5a6a7"); // To be Replaced with File multiple of 128 Bit
+		byte[] input =  Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\David\\Desktop\\Code\\Abschlussarbeit\\128Byte.txt"))); // To be Replaced with File multiple of 128 Bit
 		
 		byte[] iv = Hex.decode("9f741fdb5d8845bdb48a94394e84f8a3"); // CBC need IV multiple of Block size
 		

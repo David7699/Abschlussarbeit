@@ -1,20 +1,28 @@
 package BSI.AES;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.Security;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.jcajce.spec.AEADParameterSpec;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Hex;
 
 public class AES_256_GCM {
 	public static void main(String[] args) throws Exception
     {
+		Security.addProvider(new BouncyCastleProvider());
+		
+		for(int i = 0; i <= 1000; i++) {
 		SecretKey key = new SecretKeySpec(Hex.decode("000102030405060708090a0b0c0d0e0f000102030405060708090a0b0c0d0e0f"), "AES");
 		
 		byte[] iv = Hex.decode("bbaa99887766554433221100");
-		byte[] msg = Hex.decode("a0a1a2a3a4a5a6a7a0a1");
+		byte[] msg = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\David\\Desktop\\Code\\Abschlussarbeit\\128Byte.txt")));
 		byte[] aad = Hex.decode("9f741fdb5d8845bdb48a94394e");
 		
 		System.out.println("Message: " +  Hex.toHexString(msg));
@@ -38,6 +46,8 @@ public class AES_256_GCM {
 		byte[] pText = cipher.doFinal(out);
 		
 		System.out.println("Plain: " + Hex.toHexString(pText));
+		
+		}
     
     }
 }
