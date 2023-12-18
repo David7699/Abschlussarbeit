@@ -22,7 +22,7 @@ public class AES_128_GCM {
 			SecretKey key = new SecretKeySpec(Hex.decode("000102030405060708090a0b0c0d0e0f"), "AES");
 			
 			byte[] iv = Hex.decode("bbaa99887766554433221100");
-			byte[] msg = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\David\\Desktop\\Code\\Abschlussarbeit\\128Byte.txt")));
+			byte[] msg = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\Dell\\Downloads\\128Byte.txt")));
 			byte[] aad = Hex.decode("9f741fdb5d8845bdb48a94394e");
 			
 			System.out.println("Message: " +  Hex.toHexString(msg));

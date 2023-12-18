@@ -23,7 +23,7 @@ public class AES_128_CCM {
 		
 		Cipher cipher = Cipher.getInstance("AES/CCM/NoPadding", "BC"); // Initialiaze Cipher with AES/CCM from BC Provider
 		
-		byte[] input = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\David\\Desktop\\Code\\Abschlussarbeit\\128Byte.txt"))); // File size doesnt matter
+		byte[] input = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\Dell\\Downloads\\128Byte.txt"))); // File size doesnt matter
 		
 		byte[] iv = Hex.decode("9f741fdb5d8845bdb48a94394e"); // CTR need IV multiple of Block size
 		

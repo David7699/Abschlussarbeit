@@ -22,7 +22,7 @@ public class AES_256_CTR {
 		
 		Cipher cipher = Cipher.getInstance("AES/CTR/NoPadding", "BC"); // Initialiaze Cipher with AES/CTR from BC Provider
 		
-		byte[] input = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\David\\Desktop\\Code\\Abschlussarbeit\\128Byte.txt"))); // File size doesnt matter
+		byte[] input = Hex.decode(Files.readAllBytes(Paths.get("C:\\Users\\Dell\\Downloads\\128Byte.txt"))); // File size doesnt matter
 		
 		byte[] iv = Hex.decode("9f741fdb5d8845bdb48a94394e84f8a3"); // CTR need IV multiple of Block size
 		
