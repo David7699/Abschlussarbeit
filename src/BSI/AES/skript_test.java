@@ -42,8 +42,11 @@ public class skript_test{
 		input = Files.readAllBytes(Paths.get("C:\\Users\\David\\Downloads\\bild.jpg"));
 		cipher = Cipher.getInstance("AES/CBC/NoPadding", "BC");
 		long start = getTime();
-		encrypt();
-		decrypt();
+		for(int i = 0; i <= 1000; i++) {
+			encrypt();
+			decrypt();
+		}
+		
 		long end = getTime();
 		System.out.println((end - start) / 1000F);
 	}
