@@ -37,7 +37,7 @@ public class AES_256_CBC_JCE {
 	
 	
 	public static void main(String[] args) throws Exception {
-		input = Files.readAllBytes(Paths.get("C:\\Users\\Dell\\Downloads\\bild.jpg"));
+		input = Files.readAllBytes(Paths.get(args[0]));
 		cipher = Cipher.getInstance("AES/CBC/NoPadding");
 		long start = getTime();
 		for(int i = 0; i <= 1000; i++) {

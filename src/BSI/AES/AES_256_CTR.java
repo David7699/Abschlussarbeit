@@ -39,7 +39,7 @@ public class AES_256_CTR {
 	
 	public static void main(String[] args) throws Exception {
 		Security.addProvider(new BouncyCastleProvider());
-		input = Files.readAllBytes(Paths.get("C:\\Users\\Dell\\Downloads\\bild.jpg"));
+		input = Files.readAllBytes(Paths.get(args[0]));
 		cipher = Cipher.getInstance("AES/CTR/NoPadding", "BC");
 		long start = getTime();
 		for(int i = 0; i <= 1000; i++) {
