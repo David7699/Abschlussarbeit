@@ -1,4 +1,4 @@
-package BSI.AES;
+package BSI.AES_JCE;
 
 import static BSI.AES.AESUtils.aesSecretKeySpec;
 import static BSI.AES.AESUtils.getKey128Bit;
@@ -7,17 +7,15 @@ import static BSI.AES.AESUtils.timeInSeconds;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.Security;
 import java.util.Arrays;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Hex;
 
-public class AES_128_CBC{
+public class AES_128_CTR_JCE {
 	static byte[] input;
 	static byte[] input_encrypted;
 	static byte[] input_decrypted;
@@ -37,11 +35,9 @@ public class AES_128_CBC{
 		input_decrypted = cipher.doFinal(input_encrypted);
 	}
 	
-	
 	public static void main(String[] args) throws Exception {
-		Security.addProvider(new BouncyCastleProvider());
-		input = Files.readAllBytes(Paths.get("C:\\Users\\David\\Downloads\\bild.jpg"));
-		cipher = Cipher.getInstance("AES/CBC/NoPadding", "BC");
+		input = Files.readAllBytes(Paths.get("C:\\Users\\Dell\\Downloads\\bild.jpg"));
+		cipher = Cipher.getInstance("AES/CTR/NoPadding");
 		long start = getTime();
 		for(int i = 0; i <= 1000; i++) {
 			encrypt();
@@ -50,6 +46,5 @@ public class AES_128_CBC{
 		long end = getTime();
 		System.out.println(timeInSeconds(start, end));
 		System.out.println(Arrays.equals(input, input_decrypted));
-	}
+ 	}
 }
-
