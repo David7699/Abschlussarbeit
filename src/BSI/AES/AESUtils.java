@@ -21,8 +21,17 @@ public class AESUtils {
 		return Hex.decode("000102030405060708090a0b0c0d0e0f000102030405060708090a0b0c0d0e0f");
 	}
 	
+	public static byte[] getKey112Bit() {
+		return Hex.decode("000102030405060708090a0b0c0d");
+	}
+	
+	
 	public static SecretKeySpec aesSecretKeySpec(byte[] keyBytes) {
 		return new SecretKeySpec(keyBytes, "AES");
+	}
+	
+	public static SecretKeySpec desSecretKeySpec(byte[] keyBytes) {
+		return new SecretKeySpec(keyBytes, "DESede");
 	}
 	
 	public static byte[] getInputLaptop() throws Exception {
