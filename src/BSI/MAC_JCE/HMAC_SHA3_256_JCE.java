@@ -11,12 +11,12 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-public class HMAC_SHA256_JCE {
+public class HMAC_SHA3_256_JCE {
 	static byte[] input;
 	static byte[] input_mac;
 	
 	static Mac mac;
-	static SecretKey key = new SecretKeySpec(getKey256Bit(), "HmacSHA256");
+	static SecretKey key = new SecretKeySpec(getKey256Bit(), "HmacSHA3-256");
 	
 	public static void getMac() throws Exception{
 		mac.init(key);
@@ -25,8 +25,7 @@ public class HMAC_SHA256_JCE {
 	
 	public static void main(String[] args) throws Exception{
 		input = Files.readAllBytes(Paths.get("C:\\Users\\David\\Downloads\\137.bin"));
-		mac = Mac.getInstance("HmacSHA256");
-		System.out.println(mac.getProvider());
+		mac = Mac.getInstance("HmacSHA3-256");
 		
 		long start = getTime();
 		for( int i = 0; i <= 1000; i++) {

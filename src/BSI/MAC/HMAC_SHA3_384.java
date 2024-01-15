@@ -1,4 +1,4 @@
-package BSI.MAC_JCE;
+package BSI.MAC;
 
 import static BSI.AES.AESUtils.getKey256Bit;
 import static BSI.AES.AESUtils.getTime;
@@ -6,17 +6,20 @@ import static BSI.AES.AESUtils.timeInSeconds;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.Security;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-public class HMAC_SHA256_JCE {
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+public class HMAC_SHA3_384 {
 	static byte[] input;
 	static byte[] input_mac;
 	
 	static Mac mac;
-	static SecretKey key = new SecretKeySpec(getKey256Bit(), "HmacSHA256");
+	static SecretKey key = new SecretKeySpec(getKey256Bit(), "Hmac-SHA3-384");
 	
 	public static void getMac() throws Exception{
 		mac.init(key);
@@ -24,10 +27,9 @@ public class HMAC_SHA256_JCE {
 	}
 	
 	public static void main(String[] args) throws Exception{
-		input = Files.readAllBytes(Paths.get("C:\\Users\\David\\Downloads\\137.bin"));
-		mac = Mac.getInstance("HmacSHA256");
-		System.out.println(mac.getProvider());
-		
+		Security.addProvider(new BouncyCastleProvider());
+		input = Files.readAllBytes(Paths.get(args[0]));
+		mac = Mac.getInstance("Hmac-SHA3-384", "BC");
 		long start = getTime();
 		for( int i = 0; i <= 1000; i++) {
 			getMac();

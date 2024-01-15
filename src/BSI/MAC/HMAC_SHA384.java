@@ -19,7 +19,7 @@ public class HMAC_SHA384 {
 	static byte[] input_mac;
 	
 	static Mac mac;
-	static SecretKey key = new SecretKeySpec(getKey256Bit(), "HmacSHA256");
+	static SecretKey key = new SecretKeySpec(getKey256Bit(), "Hmac-SHA384");
 	
 	public static void getMac() throws Exception{
 		mac.init(key);
@@ -29,7 +29,7 @@ public class HMAC_SHA384 {
 	public static void main(String[] args) throws Exception{
 		Security.addProvider(new BouncyCastleProvider());
 		input = Files.readAllBytes(Paths.get(args[0]));
-		mac = Mac.getInstance("HmacSHA384", "BC");
+		mac = Mac.getInstance("Hmac-SHA384", "BC");
 		
 		long start = getTime();
 		for( int i = 0; i <= 1000; i++) {

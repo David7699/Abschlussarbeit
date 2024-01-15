@@ -16,7 +16,7 @@ public class HMAC_SHA512_JCE {
 	static byte[] input_mac;
 	
 	static Mac mac;
-	static SecretKey key = new SecretKeySpec(getKey256Bit(), "HmacSHA256");
+	static SecretKey key = new SecretKeySpec(getKey256Bit(), "HmacSHA512");
 	
 	public static void getMac() throws Exception{
 		mac.init(key);
@@ -24,7 +24,7 @@ public class HMAC_SHA512_JCE {
 	}
 	
 	public static void main(String[] args) throws Exception{
-		input = Files.readAllBytes(Paths.get(args[0]));
+		input = Files.readAllBytes(Paths.get("C:\\Users\\David\\Downloads\\137.bin"));
 		mac = Mac.getInstance("HmacSHA512");
 		
 		long start = getTime();
