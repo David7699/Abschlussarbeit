@@ -1,4 +1,4 @@
-package BSI.AES_PAD_PKCS7Padding_JCE;
+package BSI.AES_PAD_PKCS5Padding_JCE;
 
 import static BSI.AES.AESUtils.aesSecretKeySpec;
 import static BSI.AES.AESUtils.getKey192Bit;
@@ -15,7 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.util.encoders.Hex;
 
-public class AES_192_CBC_JCE_PKCS7 {
+public class AES_192_CBC_JCE_PKCS5 {
 	static byte[] input;
 	static byte[] input_encrypted;
 	static byte[] input_decrypted;
@@ -38,7 +38,7 @@ public class AES_192_CBC_JCE_PKCS7 {
 	
 	public static void main(String[] args) throws Exception {
 		input = Files.readAllBytes(Paths.get(args[0]));
-		cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+		cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 		long start = getTime();
 		for(int i = 0; i <= 1000; i++) {
 			encrypt();
