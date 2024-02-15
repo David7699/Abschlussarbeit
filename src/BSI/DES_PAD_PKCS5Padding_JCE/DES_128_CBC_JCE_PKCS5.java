@@ -15,7 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.bouncycastle.util.encoders.Hex;
 
-public class DES_128_CBC_JCE {
+public class DES_128_CBC_JCE_PKCS5 {
 	static byte[] input;
 	static byte[] input_encrypted;
 	static byte[] input_decrypted;
