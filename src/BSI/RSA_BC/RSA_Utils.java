@@ -38,6 +38,12 @@ public class RSA_Utils {
 		return keyGen.generateKeyPair();
 	}
 	
+	public static KeyPair generateECKeyJCE(ECGenParameterSpec ecSpec) throws Exception{
+		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("ECDSA");
+		keyGen.initialize(ecSpec,new SecureRandom());
+		return keyGen.generateKeyPair();
+	}
+	
 	public static long getTime() {
 		return System.currentTimeMillis();
 	}
