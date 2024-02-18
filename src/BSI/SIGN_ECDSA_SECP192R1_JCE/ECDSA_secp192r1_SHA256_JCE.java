@@ -1,4 +1,4 @@
-package BSI.SIGN_ECDSA_192_JCE;
+package BSI.SIGN_ECDSA_SECP192R1_JCE;
 
 import static BSI.RSA_BC.RSA_Utils.generateECKeyJCE;
 import static BSI.RSA_BC.RSA_Utils.getTime;
@@ -12,7 +12,7 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 
-public class ECDSA_brainpoolP192r1_SHA512_JCE {
+public class ECDSA_secp192r1_SHA256_JCE {
 	static byte[] input;
 	static byte[] signed_input;
 	static boolean signed_verification;
@@ -35,11 +35,11 @@ public class ECDSA_brainpoolP192r1_SHA512_JCE {
 
 	public static void main(String[] args) throws Exception{
 		input = Files.readAllBytes(Paths.get(args[0]));
-		ECGenParameterSpec ecSpec = new ECGenParameterSpec("brainpoolP192r1");
+		ECGenParameterSpec ecSpec = new ECGenParameterSpec("secp192r1");
 		keyPair = generateECKeyJCE(ecSpec);
 		prvKey = keyPair.getPrivate();
 		pubKey = keyPair.getPublic();
-		signature = Signature.getInstance("SHA512withECDSA");
+		signature = Signature.getInstance("SHA256withECDSA");
 		long start = getTime();
 		for(int i = 0; i <= 1000; i++) {
 			getSign();
@@ -48,6 +48,5 @@ public class ECDSA_brainpoolP192r1_SHA512_JCE {
 		long end = getTime();
 		System.out.println(timeInSeconds(start, end));
 		System.out.println(signed_verification);
-		
 	}
 }
