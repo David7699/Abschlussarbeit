@@ -39,7 +39,7 @@ public class RSA_Utils {
 	}
 	
 	public static KeyPair generateECKeyJCE(ECGenParameterSpec ecSpec) throws Exception{
-		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("ECDSA");
+		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
 		keyGen.initialize(ecSpec,new SecureRandom());
 		return keyGen.generateKeyPair();
 	}
